@@ -6,6 +6,15 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
+// Validate required environment variables
+console.log('📝 Checking environment variables...');
+console.log('JWT_SECRET available:', !!process.env.JWT_SECRET);
+if (!process.env.JWT_SECRET) {
+  console.error('❌ ERROR: JWT_SECRET is not defined in .env file');
+  process.exit(1);
+}
+console.log('✅ JWT_SECRET loaded successfully (length:', process.env.JWT_SECRET.length, ')');
+
 const app = express();
 
 // Middleware
